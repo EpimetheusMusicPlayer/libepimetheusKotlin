@@ -1,0 +1,5 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+
+tk.superl2.libepimetheus
+tk.superl2.libepimetheus.data
