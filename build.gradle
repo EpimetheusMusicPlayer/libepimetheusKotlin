@@ -69,25 +69,21 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
     from 'src/main/java'
 }
-//
-//// TODO upload to bintray properly
-//
-//artifacts {
-//    archives sourcesJar
-//}
-//
-//task createPom << {
-//    pom {
-//        project {
-//            groupId 'tk.superl2'
-//            artifactId 'libepimetheus'
-//            version '1.0'
-//            inceptionYear '2017'
-//            licenses {
-//                license {
-//                    name 'GPL-3.0'
-//                }
-//            }
-//        }
-//    }.writeTo('build/pom.xml')
-//}
+
+artifacts {
+    archives sourcesJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            licenses {
+                license {
+                    name 'GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007'
+                    url 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+                    distribution 'repo'
+                }
+            }
+        }
+    }
+}
