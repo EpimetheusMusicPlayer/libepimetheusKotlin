@@ -3,7 +3,8 @@
 ### About
 
 Libepimetheus is an Android library to connect to [Pandora Music](https://www.pandora.com/)'s REST API, documented [here](https://6xq.net/pandora-apidoc/rest/). It's the same API the web app uses. Libepimetheus doesn't enforce ads or skip limits.  
-The library can optionally use a free smart DNS service, [Portaller](http://portaller.com/), to access Pandora from outside the US.
+The library can optionally use a free smart DNS service, [Portaller](http://portaller.com/), to access Pandora from outside the US.  
+[I'm building a Pandora client for Android with this, check it out.](https://github.com/EpimetheusAndroid/Epimetheus)
 
 
 
