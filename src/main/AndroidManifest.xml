@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tk.superl2.libepimetheus">
+    package="tk.hacker1024.libepimetheus">
 
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
