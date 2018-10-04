@@ -2,6 +2,8 @@
 
 ## Package tk.hacker1024.libepimetheus.data
 
+Data objects - [Station](-station/index.md) and [Song](-song/index.md).
+
 ### Types
 
 | Name | Summary |

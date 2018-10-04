@@ -28,7 +28,7 @@ buildscript {
 dokka {
     outputFormat = 'gfm'
     outputDirectory = "docs"
-    includes = ['src/main/java/tk/superl2/libepimetheus/package-info.md']
+    includes = ['src/main/java/tk/hacker1024/libepimetheus/package-info.md']
     includeNonPublic = false
     reportUndocumented = false
 }

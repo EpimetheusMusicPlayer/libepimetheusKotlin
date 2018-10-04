@@ -1,5 +1,5 @@
-# Package tk.superl2.libepimetheus
+# Package tk.hacker1024.libepimetheus
 Code to connect to Pandora's APIs.
 
-# Package tk.superl2.libepimetheus.data
+# Package tk.hacker1024.libepimetheus.data
 Data objects - [Station] and [Song].

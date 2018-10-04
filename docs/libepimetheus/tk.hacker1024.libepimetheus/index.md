@@ -2,6 +2,8 @@
 
 ## Package tk.hacker1024.libepimetheus
 
+Code to connect to Pandora's APIs.
+
 ### Types
 
 | Name | Summary |
