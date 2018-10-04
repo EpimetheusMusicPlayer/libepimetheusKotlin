@@ -10,10 +10,10 @@ import org.json.JSONObject
  * The Pandora authentication API is documented [here](https://6xq.net/pandora-apidoc/rest/authentication/).
  */
 class User : Parcelable {
-    internal val usePortaller: Boolean
+    val usePortaller: Boolean
     internal val authToken: String
-    internal val email: String
-    internal val username: String
+    val email: String
+    val username: String
 
     /**
      * @constructor Signs in to Pandora, and retrieves the authentication token.
