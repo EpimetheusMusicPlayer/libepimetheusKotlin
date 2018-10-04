@@ -9,7 +9,7 @@ Makes and sends an API request to Pandora.
 
 ### Exceptions
 
-`PandoraException` -
+`PandoraException` - When an error occurs communicating with Pandora.
 
 ### Parameters
 
@@ -21,3 +21,7 @@ Makes and sends an API request to Pandora.
 
 `usePortaller` - Manual option to use portaller. Overrides the value set in the [User](../-user/index.md)
     object. If the [User](../-user/index.md) object is null, it's false by default.
+
+**Return**
+The JSON response from Pandora.
+

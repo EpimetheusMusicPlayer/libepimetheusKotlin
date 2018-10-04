@@ -2,6 +2,8 @@
 
 ## Package tk.superl2.libepimetheus.data
 
+Data objects - [Station](-station/index.md) and [Song](-song/index.md).
+
 ### Types
 
 | Name | Summary |

@@ -2,6 +2,8 @@
 
 ## Package tk.superl2.libepimetheus
 
+Code to connect to Pandora's APIs.
+
 ### Types
 
 | Name | Summary |

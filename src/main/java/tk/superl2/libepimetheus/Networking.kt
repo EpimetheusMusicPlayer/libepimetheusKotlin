@@ -58,13 +58,14 @@ object Networking {
      * Makes and sends an API request to Pandora.
      * [The REST API is documented here.](https://6xq.net/pandora-apidoc/rest/)
      *
-     * @throws PandoraException
+     * @throws PandoraException When an error occurs communicating with Pandora.
      *
      * @param [endpoint] The endpoint of the API to call
      * @param [requestJSON] The JSON request body to send.
      * @param [user] The [User] object to authenticate with. Can be null when authenticating.
      * @param [usePortaller] Manual option to use portaller. Overrides the value set in the [User]
      *                       object. If the [User] object is null, it's false by default.
+     * @return The JSON response from Pandora.
      */
     fun makeApiRequest(
         endpoint: String,
