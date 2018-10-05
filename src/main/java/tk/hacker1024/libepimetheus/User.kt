@@ -63,7 +63,11 @@ class User : Parcelable {
             JSONObject().put("webname", webname),
             this
         ).apply {
-            return getString("fullName")
+            return if (has("fullName")) {
+                getString("fullName")
+            } else {
+                webname
+            }
         }
     }
 
