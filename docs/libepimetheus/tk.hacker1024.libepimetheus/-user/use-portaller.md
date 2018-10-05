@@ -2,7 +2,7 @@
 
 # usePortaller
 
-`var usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+`val usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 Whether to use the free Portaller smart DNS service or not, to access
     Pandora outside the US.
@@ -11,8 +11,3 @@ Whether to use the free Portaller smart DNS service or not, to access
 
 `usePortaller` - Whether to use the free Portaller smart DNS service or not, to access
     Pandora outside the US.
-
-### Parameters
-
-`authToken` - An existing authentication token to use. Don't set this unless you need to.
-    This paramater exists mainly for the Parcelable implementation.

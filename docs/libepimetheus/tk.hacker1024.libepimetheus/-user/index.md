@@ -18,14 +18,16 @@ The Pandora authentication API is documented [here](https://6xq.net/pandora-apid
 
 | Name | Summary |
 |---|---|
-| [&lt;init&gt;](-init-.md) | `User(parcel: `[`Parcel`](https://developer.android.com/reference/android/os/Parcel.html)`)``User(email: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, password: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`? = null, usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`, authToken: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`? = null)`<br>Signs in to Pandora, and retrieves the authentication token. |
+| [&lt;init&gt;](-init-.md) | `User(email: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, password: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`)`<br>Signs in to Pandora, and retrieves the authentication token. |
 
 ### Properties
 
 | Name | Summary |
 |---|---|
-| [email](email.md) | `val email: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The email address of the user to sign in with. |
-| [usePortaller](use-portaller.md) | `var usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Whether to use the free Portaller smart DNS service or not, to access     Pandora outside the US. |
+| [email](email.md) | `val email: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The email address of the user. |
+| [profilePicUri](profile-pic-uri.md) | `val profilePicUri: `[`Uri`](https://developer.android.com/reference/android/net/Uri.html)<br>The [Uri](https://developer.android.com/reference/android/net/Uri.html) of the user's profile picture. |
+| [usePortaller](use-portaller.md) | `val usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Whether to use the free Portaller smart DNS service or not, to access     Pandora outside the US. |
+| [username](username.md) | `val username: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The user's username |
 
 ### Functions
 

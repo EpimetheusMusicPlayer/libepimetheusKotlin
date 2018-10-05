@@ -4,12 +4,8 @@
 
 `val email: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)
 
-The email address of the user to sign in with.
+The email address of the user.
 
 ### Property
 
-`email` - The email address of the user to sign in with.
-
-### Parameters
-
-`password` - The user's password.
+`email` - The email address of the user.
