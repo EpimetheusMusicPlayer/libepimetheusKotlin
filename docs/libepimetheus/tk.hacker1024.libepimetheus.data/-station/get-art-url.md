@@ -7,6 +7,10 @@
 This function will return the station's art URL for the given size. If the given size
 doesn't exist, it will return the URL for the nearest larger size.
 
+Note: The URLs for the Shuffle station's 130x130, 600x600, and 640x640 logos aren't valid,
+    you'll get a 404 error. (At the time of writing this.) Make sure not to use the URLs
+    for these sizes of the Shuffle station logo.
+
 ### Parameters
 
 `preferredSize` - The preferred size of the art.
