@@ -56,6 +56,7 @@ data class Station(
      */
     fun getArtUrl(preferredSize: Int): String? {
         if (artUrls.isNotEmpty()) {
+            if (artUrls.containsKey(preferredSize)) return artUrls[preferredSize]
             artUrls.keys.sorted().apply {
                 forEach { size ->
                     if (preferredSize <= size) return artUrls[size]!!
@@ -181,6 +182,7 @@ class Song(
      */
     fun getArtUrl(preferredSize: Int): String {
         if (artUrls.isNotEmpty()) {
+            if (artUrls.containsKey(preferredSize)) return artUrls[preferredSize]!!
             artUrls.keys.sorted().apply {
                 forEach { size ->
                     if (preferredSize <= size) return artUrls[size]!!
