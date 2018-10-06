@@ -7,6 +7,8 @@ import android.support.v4.media.RatingCompat
 import org.json.JSONArray
 import org.json.JSONObject
 
+private const val GENERIC_ART_URL = "https://www.pandora.com/web-version/1.25.1/images/album_500.png"
+
 /**
  * A data class to hold information about a station.
  *
@@ -54,9 +56,9 @@ data class Station(
      * @param [preferredSize] The preferred size of the art.
      * @return The art URL for the nearest larger or equal size of the size specified.
      */
-    fun getArtUrl(preferredSize: Int): String? {
+    fun getArtUrl(preferredSize: Int): String {
         if (artUrls.isNotEmpty()) {
-            if (artUrls.containsKey(preferredSize)) return artUrls[preferredSize]
+            if (artUrls.containsKey(preferredSize)) return artUrls[preferredSize]!!
             artUrls.keys.sorted().apply {
                 forEach { size ->
                     if (preferredSize <= size) return artUrls[size]!!
@@ -64,7 +66,7 @@ data class Station(
                 return artUrls[this.last()]!!
             }
         } else {
-            return null
+            return "https://www.pandora.com/web-version/1.25.1/images/album_500.png"
         }
     }
 
@@ -189,7 +191,7 @@ class Song(
                 }
                 return artUrls[this.last()]!!
             }
-        } else return "https://www.pandora.com/web-version/1.25.1/images/album_500.png"
+        } else return GENERIC_ART_URL
     }
 
     internal fun isFeedbackIDSet() = ::feedbackId.isInitialized
