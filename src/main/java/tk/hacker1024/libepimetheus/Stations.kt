@@ -98,3 +98,18 @@ fun Station.getPlaylist(user: User) =
             user
         ).getJSONArray("tracks")
     )
+
+/**
+ * This extension function deletes the receiver station.
+ *
+ * @param [user] The [User] object to authenticate with.
+ */
+fun Station.delete(user: User) {
+    Networking.makeApiRequest(
+        "station/removeStation",
+        JSONObject().put("stationId", id),
+        user
+    ).apply {
+        println(toString(2))
+    }
+}
