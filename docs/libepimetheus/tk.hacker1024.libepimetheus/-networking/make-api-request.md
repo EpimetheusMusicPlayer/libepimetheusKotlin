@@ -11,6 +11,9 @@ Makes and sends an API request to Pandora.
 
 `PandoraException` - When an error occurs communicating with Pandora.
 
+`IllegalArgumentException` - When the user object is null, and the request isn't an
+    authentication request.
+
 ### Parameters
 
 `endpoint` - The endpoint of the API to call

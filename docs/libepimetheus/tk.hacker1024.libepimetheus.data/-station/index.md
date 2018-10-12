@@ -47,5 +47,6 @@ A data class to hold information about a station.
 
 | Name | Summary |
 |---|---|
+| [delete](../../tk.hacker1024.libepimetheus/delete.md) | `fun `[`Station`](./index.md)`.delete(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>This extension function deletes the receiver station. |
 | [getDetails](../../tk.hacker1024.libepimetheus/get-details.md) | `fun `[`Station`](./index.md)`.getDetails(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`): `[`JSONObject`](https://developer.android.com/reference/org/json/JSONObject.html)<br>This extension function retrieves detailed information about a [Station](./index.md). |
 | [getPlaylist](../../tk.hacker1024.libepimetheus/get-playlist.md) | `fun `[`Station`](./index.md)`.getPlaylist(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`): `[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Song`](../-song/index.md)`>`<br>This extension function returns the station playlist in the form of a list of [Song](../-song/index.md) objects. |
