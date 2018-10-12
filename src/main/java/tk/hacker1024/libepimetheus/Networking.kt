@@ -58,6 +58,8 @@ object Networking {
      * [The REST API is documented here.](https://6xq.net/pandora-apidoc/rest/)
      *
      * @throws PandoraException When an error occurs communicating with Pandora.
+     * @throws IllegalArgumentException When the user object is null, and the request isn't an
+     *                                  authentication request.
      *
      * @param [endpoint] The endpoint of the API to call
      * @param [requestJSON] The JSON request body to send.
