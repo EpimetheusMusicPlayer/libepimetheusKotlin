@@ -109,7 +109,5 @@ fun Station.delete(user: User) {
         "station/removeStation",
         JSONObject().put("stationId", id),
         user
-    ).apply {
-        println(toString(2))
-    }
+    )
 }
