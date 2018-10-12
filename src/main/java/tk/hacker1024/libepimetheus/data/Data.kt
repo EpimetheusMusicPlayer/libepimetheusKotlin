@@ -17,6 +17,8 @@ private const val GENERIC_ART_URL = "https://www.pandora.com/web-version/1.25.1/
  * @property [id] The station ID.
  * @property [isShuffle] Boolean indicating if the station is the Shuffle/QuickMix station.
  * @property [isThumbprint] Boolean indicating if the station is the thumbprint station.
+ * @property [canDelete] Boolean indicating if the station can be deleted.
+ * @property [canRename] Boolean indication if the station can be renamed.
  * @property [artUrls] A [HashMap] containing art URLs values with their sizes as keys.
  */
 data class Station(
@@ -24,6 +26,8 @@ data class Station(
     internal val id: String,
     val isShuffle: Boolean,
     val isThumbprint: Boolean,
+    val canDelete: Boolean,
+    val canRename: Boolean,
     private val artUrls: HashMap<Int, String>
 ) : Parcelable {
     /**
@@ -36,6 +40,8 @@ data class Station(
         id = stationJSON.getString("stationId"),
         isShuffle = stationJSON.getBoolean("isShuffle"),
         isThumbprint = stationJSON.getBoolean("isThumbprint"),
+        canDelete = stationJSON.getBoolean("allowDelete"),
+        canRename = stationJSON.getBoolean("allowRename"),
         artUrls = HashMap<Int, String>().also { artMap ->
             if (stationJSON.has("art")) {
                 stationJSON.getJSONArray("art").also { artJSONArray ->
@@ -102,6 +108,8 @@ data class Station(
         parcel.readString()!!,
         parcel.readByte() != 0.toByte(),
         parcel.readByte() != 0.toByte(),
+        parcel.readByte() != 0.toByte(),
+        parcel.readByte() != 0.toByte(),
         parcel.readSerializable() as HashMap<Int, String>
     )
 
@@ -110,6 +118,8 @@ data class Station(
         parcel.writeString(id)
         parcel.writeByte(if (isShuffle) 1 else 0)
         parcel.writeByte(if (isThumbprint) 1 else 0)
+        parcel.writeByte(if (canDelete) 1 else 0)
+        parcel.writeByte(if (canRename) 1 else 0)
         parcel.writeSerializable(artUrls)
     }
 
