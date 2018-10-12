@@ -111,3 +111,26 @@ fun Station.delete(user: User) {
         user
     )
 }
+
+
+/**
+ * This extension function renames the receiver station.
+ *
+ * @param [user] The [User] object to authenticate with.
+ * @return The name of the station after it has been renamed.
+ */
+fun Station.rename(newName: String, user: User): String {
+    if (canRename) {
+        Networking.makeApiRequest(
+            "station/updateStation",
+            JSONObject()
+                .put("name", newName)
+                .put("stationId", id),
+            user
+        ).apply {
+            return getString("name")
+        }
+    } else {
+        return name
+    }
+}
