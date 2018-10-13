@@ -9,7 +9,3 @@ The song album.
 ### Property
 
 `album` - The song album.
-
-### Parameters
-
-`rating` - The song rating.

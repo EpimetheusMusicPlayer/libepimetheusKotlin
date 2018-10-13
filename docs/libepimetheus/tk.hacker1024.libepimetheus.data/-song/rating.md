@@ -3,3 +3,9 @@
 # rating
 
 `var rating: RatingCompat`
+
+The song rating.
+
+### Property
+
+`rating` - The song rating.

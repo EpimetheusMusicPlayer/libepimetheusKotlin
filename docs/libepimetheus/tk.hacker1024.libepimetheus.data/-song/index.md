@@ -2,7 +2,7 @@
 
 # Song
 
-`class Song`
+`class Song : `[`PandoraData`](../-pandora-data/index.md)
 
 A data class to hold information about a song.
 
@@ -10,24 +10,25 @@ A data class to hold information about a song.
 
 | Name | Summary |
 |---|---|
-| [&lt;init&gt;](-init-.md) | `Song(name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, artist: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, album: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, rating: RatingCompat, id: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, trackToken: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, audioUri: `[`Uri`](https://developer.android.com/reference/android/net/Uri.html)`, artUrls: `[`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html)`<`[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`>)`<br>Creates the object with the given name, id, and art URLs. |
+| [&lt;init&gt;](-init-.md) | `Song(name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, artist: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, album: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, rating: RatingCompat, id: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, trackToken: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, audioUri: `[`Uri`](https://developer.android.com/reference/android/net/Uri.html)`, artUrls: `[`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html)`<`[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`>)`<br>A data class to hold information about a song. |
 
 ### Properties
 
 | Name | Summary |
 |---|---|
 | [album](album.md) | `val album: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The song album. |
+| [artUrls](art-urls.md) | `val artUrls: `[`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html)`<`[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`>` |
 | [artist](artist.md) | `val artist: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The song artist. |
-| [audioUri](audio-uri.md) | `val audioUri: `[`Uri`](https://developer.android.com/reference/android/net/Uri.html) |
+| [audioUri](audio-uri.md) | `val audioUri: `[`Uri`](https://developer.android.com/reference/android/net/Uri.html)<br>The song's audio URI. |
 | [name](name.md) | `val name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The name of the song. |
-| [rating](rating.md) | `var rating: RatingCompat` |
-| [settingFeedback](setting-feedback.md) | `var settingFeedback: RatingCompat` |
+| [rating](rating.md) | `var rating: RatingCompat`<br>The song rating. |
+| [settingFeedback](setting-feedback.md) | `var settingFeedback: RatingCompat`<br>The feedback that's being sent to Pandora at the time. If it's     unrated, no feedback is being sent. |
 
-### Functions
+### Inherited Functions
 
 | Name | Summary |
 |---|---|
-| [getArtUrl](get-art-url.md) | `fun getArtUrl(preferredSize: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>This function will return the song's art URL for the given size. If the given size doesn't exist, it will return the URL for the nearest larger size. |
+| [getArtUrl](../-pandora-data/get-art-url.md) | `fun getArtUrl(preferredSize: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>This function will return the data object's art URL for the given size. If the given size doesn't exist, it will return the URL for the nearest larger size. |
 
 ### Extension Functions
 

@@ -4,11 +4,16 @@
 
 | Name | Summary |
 |---|---|
+| [tk.hacker1024.libepimetheus.data.Artist](../tk.hacker1024.libepimetheus.data/-artist/index.md) | A data class to hold information about an artist. |
+| [tk.hacker1024.libepimetheus.Browse](../tk.hacker1024.libepimetheus/-browse/index.md) |  |
+| [tk.hacker1024.libepimetheus.data.GenreCategory](../tk.hacker1024.libepimetheus.data/-genre-category/index.md) | A data class to hold information about a genre category. |
+| [tk.hacker1024.libepimetheus.data.GenreStation](../tk.hacker1024.libepimetheus.data/-genre-station/index.md) | A data class to hold information about a genre station. |
 | [tk.hacker1024.libepimetheus.InvalidAuthTokenException](../tk.hacker1024.libepimetheus/-invalid-auth-token-exception.md) | Thrown when the authentication token in invalid. |
 | [tk.hacker1024.libepimetheus.InvalidLoginException](../tk.hacker1024.libepimetheus/-invalid-login-exception.md) | Thrown when a login is invalid. |
 | [tk.hacker1024.libepimetheus.InvalidRequestException](../tk.hacker1024.libepimetheus/-invalid-request-exception.md) | Thrown when an "invalid request" response is received from Pandora. |
 | [tk.hacker1024.libepimetheus.LocationException](../tk.hacker1024.libepimetheus/-location-exception.md) | Thrown when Pandora can't be accessed because of location restrictions. |
 | [tk.hacker1024.libepimetheus.Networking](../tk.hacker1024.libepimetheus/-networking/index.md) | This singleton contains networking functions, used to call Pandora API methods. The Pandora REST API is documented [here](https://6xq.net/pandora-apidoc/rest/). |
+| [tk.hacker1024.libepimetheus.data.PandoraData](../tk.hacker1024.libepimetheus.data/-pandora-data/index.md) |  |
 | [tk.hacker1024.libepimetheus.PandoraException](../tk.hacker1024.libepimetheus/-pandora-exception/index.md) | A generic exception to be used when the reason for the error is unknown. |
 | [tk.hacker1024.libepimetheus.data.Song](../tk.hacker1024.libepimetheus.data/-song/index.md) | A data class to hold information about a song. |
 | [tk.hacker1024.libepimetheus.data.Station](../tk.hacker1024.libepimetheus.data/-station/index.md) | A data class to hold information about a station. |

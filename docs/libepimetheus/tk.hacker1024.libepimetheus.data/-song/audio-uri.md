@@ -3,3 +3,9 @@
 # audioUri
 
 `val audioUri: `[`Uri`](https://developer.android.com/reference/android/net/Uri.html)
+
+The song's audio URI.
+
+### Property
+
+`audioUri` - The song's audio URI.

@@ -2,7 +2,7 @@
 
 # Station
 
-`data class Station : `[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable.html)
+`data class Station : `[`PandoraData`](../-pandora-data/index.md)`, `[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable.html)
 
 A data class to hold information about a station.
 
@@ -22,6 +22,7 @@ A data class to hold information about a station.
 
 | Name | Summary |
 |---|---|
+| [artUrls](art-urls.md) | `val artUrls: `[`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html)`<`[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`>`<br>A [HashMap](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html) containing art URLs values with their sizes as keys. |
 | [canDelete](can-delete.md) | `val canDelete: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Boolean indicating if the station can be deleted. |
 | [canRename](can-rename.md) | `val canRename: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Boolean indication if the station can be renamed. |
 | [isShuffle](is-shuffle.md) | `val isShuffle: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Boolean indicating if the station is the Shuffle/QuickMix station. |
@@ -33,8 +34,13 @@ A data class to hold information about a station.
 | Name | Summary |
 |---|---|
 | [describeContents](describe-contents.md) | `fun describeContents(): `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
-| [getArtUrl](get-art-url.md) | `fun getArtUrl(preferredSize: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>This function will return the station's art URL for the given size. If the given size doesn't exist, it will return the URL for the nearest larger size. |
 | [writeToParcel](write-to-parcel.md) | `fun writeToParcel(parcel: `[`Parcel`](https://developer.android.com/reference/android/os/Parcel.html)`, flags: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
+
+### Inherited Functions
+
+| Name | Summary |
+|---|---|
+| [getArtUrl](../-pandora-data/get-art-url.md) | `fun getArtUrl(preferredSize: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>This function will return the data object's art URL for the given size. If the given size doesn't exist, it will return the URL for the nearest larger size. |
 
 ### Companion Object Functions
 
@@ -50,3 +56,4 @@ A data class to hold information about a station.
 | [delete](../../tk.hacker1024.libepimetheus/delete.md) | `fun `[`Station`](./index.md)`.delete(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>This extension function deletes the receiver station. |
 | [getDetails](../../tk.hacker1024.libepimetheus/get-details.md) | `fun `[`Station`](./index.md)`.getDetails(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`): `[`JSONObject`](https://developer.android.com/reference/org/json/JSONObject.html)<br>This extension function retrieves detailed information about a [Station](./index.md). |
 | [getPlaylist](../../tk.hacker1024.libepimetheus/get-playlist.md) | `fun `[`Station`](./index.md)`.getPlaylist(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`): `[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Song`](../-song/index.md)`>`<br>This extension function returns the station playlist in the form of a list of [Song](../-song/index.md) objects. |
+| [rename](../../tk.hacker1024.libepimetheus/rename.md) | `fun `[`Station`](./index.md)`.rename(newName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>This extension function renames the receiver station. |

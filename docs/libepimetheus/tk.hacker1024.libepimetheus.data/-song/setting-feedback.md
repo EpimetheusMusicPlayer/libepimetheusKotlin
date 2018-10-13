@@ -3,3 +3,11 @@
 # settingFeedback
 
 `var settingFeedback: RatingCompat`
+
+The feedback that's being sent to Pandora at the time. If it's
+    unrated, no feedback is being sent.
+
+### Property
+
+`settingFeedback` - The feedback that's being sent to Pandora at the time. If it's
+    unrated, no feedback is being sent.
