@@ -12,6 +12,7 @@ import tk.hacker1024.libepimetheus.data.Song
  */
 fun Song.addTired(user: User) {
     Networking.makeApiRequest(
+        "v1",
         "listener/addTiredSong",
         JSONObject().put("trackToken", trackToken),
         user
@@ -28,6 +29,7 @@ fun Song.addTired(user: User) {
 fun Song.addFeedback(thumbsUp: Boolean, user: User) {
     settingFeedback = RatingCompat.newThumbRating(thumbsUp)
     Networking.makeApiRequest(
+        "v1",
         "station/addFeedback",
         JSONObject()
             .put("trackToken", trackToken)
@@ -53,6 +55,7 @@ fun Song.deleteFeedback(user: User) {
         feedbackId = getFeedbackId(user)
     }
     Networking.makeApiRequest(
+        "v1",
         "station/deleteFeedback",
         JSONObject()
             .put("feedbackId", feedbackId)
@@ -81,6 +84,7 @@ private fun Song.getFeedbackId(user: User): String {
     if (!rating.isRated) throw IllegalStateException("Song is not rated yet!")
 
     return Networking.makeApiRequest(
+        "v1",
         "station/addFeedback",
         JSONObject()
             .put("trackToken", trackToken)

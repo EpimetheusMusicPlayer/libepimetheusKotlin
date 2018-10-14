@@ -38,13 +38,13 @@ object Networking {
         }
     }
 
-    private val client by lazy {
+    internal val client by lazy {
         OkHttpClient.Builder()
             .cookieJar(PandoraCookieJar())
             .build()!!
     }
 
-    private val portallerClient by lazy {
+    internal val portallerClient by lazy {
         OkHttpClient.Builder()
             .dns {
                 listOf(InetAddress.getByAddress(byteArrayOf(107.toByte(), 170.toByte(), 15.toByte(), 247.toByte())))
@@ -61,6 +61,7 @@ object Networking {
      * @throws IllegalArgumentException When the user object is null, and the request isn't an
      *                                  authentication request.
      *
+     * @param [version] The version of the API to use.
      * @param [endpoint] The endpoint of the API to call
      * @param [requestJSON] The JSON request body to send.
      * @param [user] The [User] object to authenticate with. Can be null when authenticating.
@@ -69,6 +70,7 @@ object Networking {
      * @return The JSON response from Pandora.
      */
     fun makeApiRequest(
+        version: String,
         endpoint: String,
         requestJSON: JSONObject = JSONObject(),
         user: User? = if (endpoint.contains("auth")) null else throw IllegalArgumentException("The user must not be null, unless you're authenticating!"),
@@ -79,7 +81,7 @@ object Networking {
             .scheme("https")
             .host("www.pandora.com")
             .addPathSegment("api")
-            .addPathSegment("v1")
+            .addPathSegment(version)
             .addPathSegments(endpoint)
             .build()
 
@@ -109,4 +111,29 @@ object Networking {
             }
         }
     }
+
+    internal fun makeAutocompleteRequest(
+        query: String,
+        artSize: Int, user: User,
+        usePortaller: Boolean = user.usePortaller
+    ) = (if (usePortaller) Networking.portallerClient else Networking.client).newCall(
+        Request.Builder()
+            .url(
+                HttpUrl.Builder()
+                    .scheme("https")
+                    .host("www.pandora.com")
+                    .addPathSegment("autocomplete")
+                    .addQueryParameter("q", query)
+                    .addQueryParameter("listenercount", "yes")
+                    .addQueryParameter("artSize", "Square$artSize")
+                    .addQueryParameter("sendquery", "no")
+                    .addQueryParameter("seotoken", "yes")
+                    .build()
+            )
+            .header("Cookie", "csrftoken=${((if (usePortaller) portallerClient else client).cookieJar() as PandoraCookieJar).getCSRFToken(usePortaller)}"
+            )
+            .header("X-CsrfToken", ((if (usePortaller) portallerClient else client).cookieJar() as PandoraCookieJar).getCSRFToken(usePortaller))
+            .header("X-AuthToken", user.authToken)
+            .build()
+    ).execute().body()!!.string()
 }

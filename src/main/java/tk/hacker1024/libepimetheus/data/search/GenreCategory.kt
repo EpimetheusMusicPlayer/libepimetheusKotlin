@@ -1,7 +1,8 @@
-package tk.hacker1024.libepimetheus.data
+package tk.hacker1024.libepimetheus.data.search
 
 import org.json.JSONArray
 import org.json.JSONObject
+import tk.hacker1024.libepimetheus.data.PandoraData
 
 /**
  * A data class to hold information about a genre category.
@@ -16,17 +17,7 @@ data class GenreCategory(
     private constructor(genreCategoryJSON: JSONObject) : this(
         name = genreCategoryJSON.getString("name"),
         token = genreCategoryJSON.getString("token"),
-        artUrls = HashMap<Int, String>().also { artMap ->
-            if (genreCategoryJSON.has("art")) {
-                genreCategoryJSON.getJSONArray("art").also { artJSONArray ->
-                    for (i in 0 until artJSONArray.length()) {
-                        artJSONArray.getJSONObject(i).apply {
-                            artMap[getInt("size")] = getString("url")
-                        }
-                    }
-                }
-            }
-        }
+        artUrls = artJSONtoMap(genreCategoryJSON.getJSONArray("art"))
     )
 
     internal companion object {

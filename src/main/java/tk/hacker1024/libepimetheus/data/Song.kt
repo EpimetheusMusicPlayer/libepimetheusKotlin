@@ -44,17 +44,7 @@ class Song(
         id = songJSON.getString("musicId"),
         trackToken = songJSON.getString("trackToken"),
         audioUri = Uri.parse(songJSON.getString("audioURL")),
-        artUrls = HashMap<Int, String>().also { artMap ->
-            if (songJSON.has("albumArt")) {
-                songJSON.getJSONArray("albumArt").also { artJSONArray ->
-                    for (i in 0 until artJSONArray.length()) {
-                        artJSONArray.getJSONObject(i).apply {
-                            artMap[getInt("size")] = getString("url")
-                        }
-                    }
-                }
-            }
-        }
+        artUrls = artJSONtoMap(songJSON.getJSONArray("albumArt"))
     )
 
     internal fun isFeedbackIDSet() = ::feedbackId.isInitialized

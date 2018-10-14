@@ -2,7 +2,7 @@
 
 # makeApiRequest
 
-`fun makeApiRequest(endpoint: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, requestJSON: `[`JSONObject`](https://developer.android.com/reference/org/json/JSONObject.html)` = JSONObject(), user: `[`User`](../-user/index.md)`? = if (endpoint.contains("auth")) null else throw IllegalArgumentException("The user must not be null, unless you're authenticating!"), usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = user?.usePortaller ?: false): `[`JSONObject`](https://developer.android.com/reference/org/json/JSONObject.html)
+`fun makeApiRequest(version: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, endpoint: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, requestJSON: `[`JSONObject`](https://developer.android.com/reference/org/json/JSONObject.html)` = JSONObject(), user: `[`User`](../-user/index.md)`? = if (endpoint.contains("auth")) null else throw IllegalArgumentException("The user must not be null, unless you're authenticating!"), usePortaller: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = user?.usePortaller ?: false): `[`JSONObject`](https://developer.android.com/reference/org/json/JSONObject.html)
 
 Makes and sends an API request to Pandora.
 [The REST API is documented here.](https://6xq.net/pandora-apidoc/rest/)
@@ -15,6 +15,8 @@ Makes and sends an API request to Pandora.
     authentication request.
 
 ### Parameters
+
+`version` - The version of the API to use.
 
 `endpoint` - The endpoint of the API to call
 

@@ -1,8 +1,10 @@
 package tk.hacker1024.libepimetheus.data
 
-private const val GENERIC_ART_URL = "https://www.pandora.com/web-version/1.25.1/images/album_500.png"
+import org.json.JSONArray
 
-abstract class PandoraData( private val defaultArtUrl: String = GENERIC_ART_URL) {
+internal const val GENERIC_ART_URL = "https://www.pandora.com/web-version/1.25.1/images/album_500.png"
+
+abstract class PandoraData(private val defaultArtUrl: String = GENERIC_ART_URL) {
     abstract val name: String
     protected abstract val artUrls: HashMap<Int, String>
 
@@ -23,5 +25,17 @@ abstract class PandoraData( private val defaultArtUrl: String = GENERIC_ART_URL)
                 return artUrls[this.last()]!!
             }
         } else return defaultArtUrl
+    }
+
+    internal companion object {
+        internal fun artJSONtoMap(artJSON: JSONArray): HashMap<Int, String> {
+            return HashMap<Int, String>().also { artMap ->
+                for (i in 0 until artJSON.length()) {
+                    artJSON.getJSONObject(i).apply {
+                        artMap[getInt("size")] = getString("url")
+                    }
+                }
+            }
+        }
     }
 }

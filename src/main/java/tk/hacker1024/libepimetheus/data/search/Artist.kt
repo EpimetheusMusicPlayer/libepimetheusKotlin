@@ -1,7 +1,8 @@
-package tk.hacker1024.libepimetheus.data
+package tk.hacker1024.libepimetheus.data.search
 
 import org.json.JSONArray
 import org.json.JSONObject
+import tk.hacker1024.libepimetheus.data.PandoraData
 
 /**
  * A data class to hold information about an artist.
@@ -11,27 +12,19 @@ import org.json.JSONObject
  */
 data class Artist(
     override val name: String,
-    internal val musicId: String,
+    internal val musicId: String? = null,
     internal val pandoraId: String,
-    val detailUrl: String,
+    val detailUrl: String? = null,
+    override val listenerCount: Int? = null,
     override val artUrls: HashMap<Int, String>
-) : PandoraData("https://www.pandora.com/web-version/1.34.2/images/artist_500.png") {
+) : Listenable("https://www.pandora.com/web-version/1.34.2/images/artist_500.png") {
     private constructor(genreStationJSON: JSONObject) : this(
         name = genreStationJSON.getString("name"),
         musicId = genreStationJSON.getString("musicId"),
         pandoraId = genreStationJSON.getString("pandoraId"),
         detailUrl = genreStationJSON.getString("detailUrl"),
-        artUrls = HashMap<Int, String>().also { artMap ->
-            if (genreStationJSON.has("art")) {
-                genreStationJSON.getJSONArray("art").also { artJSONArray ->
-                    for (i in 0 until artJSONArray.length()) {
-                        artJSONArray.getJSONObject(i).apply {
-                            artMap[getInt("size")] = getString("url")
-                        }
-                    }
-                }
-            }
-        }
+        listenerCount = if (genreStationJSON.has("listenerCount")) genreStationJSON.getInt("listenerCount") else null,
+        artUrls = artJSONtoMap(genreStationJSON.getJSONArray("art"))
     )
 
     internal companion object {

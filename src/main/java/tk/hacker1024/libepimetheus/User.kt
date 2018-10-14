@@ -42,6 +42,7 @@ class User : Parcelable {
         this.email = email
         // Make the API request, and save the authentication token
         Networking.makeApiRequest(
+            "v1",
             "auth/login",
             JSONObject()
                 .put("existingAuthToken", null)
@@ -59,6 +60,7 @@ class User : Parcelable {
 
     private fun retrieveUsername(): String {
         Networking.makeApiRequest(
+            "v1",
             "listener/getProfile",
             JSONObject().put("webname", webname),
             this

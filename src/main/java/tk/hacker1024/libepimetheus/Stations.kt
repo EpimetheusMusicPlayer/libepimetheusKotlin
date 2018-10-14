@@ -35,6 +35,7 @@ object Stations {
     ): List<Station> =
         Station.createListFromJSONArray(
             Networking.makeApiRequest(
+                "v1",
                 "station/getStations",
                 JSONObject().put("pageSize", 250),
                 user
@@ -54,6 +55,7 @@ object Stations {
     private fun getShuffle(user: User) =
         Station(
             Networking.makeApiRequest(
+                version = "v1",
                 endpoint = "station/shuffle",
                 user = user
             )
@@ -69,6 +71,7 @@ object Stations {
  */
 fun Station.getDetails(user: User) =
     Networking.makeApiRequest(
+        "v1",
         "station/getStationDetails",
         JSONObject()
             .put("stationId", id)
@@ -86,6 +89,7 @@ fun Station.getDetails(user: User) =
 fun Station.getPlaylist(user: User) =
     Song.createListFromJSONArray(
         Networking.makeApiRequest(
+            "v1",
             "playlist/getFragment",
             JSONObject()
                 .put("stationId", id)
@@ -106,6 +110,7 @@ fun Station.getPlaylist(user: User) =
  */
 fun Station.delete(user: User) {
     Networking.makeApiRequest(
+        "v1",
         "station/removeStation",
         JSONObject().put("stationId", id),
         user
@@ -122,6 +127,7 @@ fun Station.delete(user: User) {
 fun Station.rename(newName: String, user: User): String {
     if (canRename) {
         Networking.makeApiRequest(
+            "v1",
             "station/updateStation",
             JSONObject()
                 .put("name", newName)

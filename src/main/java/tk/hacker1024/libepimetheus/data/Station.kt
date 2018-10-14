@@ -5,8 +5,6 @@ import android.os.Parcelable
 import org.json.JSONArray
 import org.json.JSONObject
 
-private const val GENERIC_ART_URL = "https://www.pandora.com/web-version/1.25.1/images/album_500.png"
-
 /**
  * A data class to hold information about a station.
  *
@@ -39,17 +37,7 @@ data class Station(
         isThumbprint = stationJSON.getBoolean("isThumbprint"),
         canDelete = stationJSON.getBoolean("allowDelete"),
         canRename = stationJSON.getBoolean("allowRename"),
-        artUrls = HashMap<Int, String>().also { artMap ->
-            if (stationJSON.has("art")) {
-                stationJSON.getJSONArray("art").also { artJSONArray ->
-                    for (i in 0 until artJSONArray.length()) {
-                        artJSONArray.getJSONObject(i).apply {
-                            artMap[getInt("size")] = getString("url")
-                        }
-                    }
-                }
-            }
-        }
+        artUrls = if (stationJSON.has("art")) artJSONtoMap(stationJSON.getJSONArray("art")) else HashMap()
     )
 
     companion object CREATOR : Parcelable.Creator<Station> {
