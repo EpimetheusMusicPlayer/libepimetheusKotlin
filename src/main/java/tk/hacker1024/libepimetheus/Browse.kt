@@ -70,6 +70,21 @@ fun GenreCategory.getGenres(user: User): List<GenreStation> {
 }
 
 /**
+ * Adds the genre station to the user's station list.
+ *
+ * @receiver The genre station to add.
+ * @param The [User] to add the genre station to.
+ */
+fun GenreStation.add(user: User) {
+    Networking.makeApiRequest(
+        "v1",
+        "station/createStation",
+        JSONObject().put("pandoraId", pandoraId),
+        user
+    )
+}
+
+/**
  * This singleton contains functions to search Pandora.
  */
 object Search {
