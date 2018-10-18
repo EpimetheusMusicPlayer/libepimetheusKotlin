@@ -24,7 +24,7 @@ data class GenreStation(
         token = genreStationJSON.getString("token"),
         musicId = genreStationJSON.getString("musicId"),
         pandoraId = genreStationJSON.getString("pandoraId"),
-        description = genreStationJSON.getString("description"),
+        description = if (genreStationJSON.has("description")) genreStationJSON.getString("description") else null,
         listenerCount = genreStationJSON.getInt("listenerCount"),
         artUrls = artJSONtoMap(genreStationJSON.getJSONArray("art"))
     )
