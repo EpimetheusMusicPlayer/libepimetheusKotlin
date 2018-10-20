@@ -2,7 +2,7 @@ package tk.hacker1024.libepimetheus.data.search
 
 import org.json.JSONArray
 import org.json.JSONObject
-import tk.hacker1024.libepimetheus.data.PandoraData
+import tk.hacker1024.libepimetheus.data.trimRegex
 
 /**
  * A data class to hold information about an artist.
@@ -13,13 +13,13 @@ import tk.hacker1024.libepimetheus.data.PandoraData
 data class Artist(
     override val name: String,
     internal val musicId: String? = null,
-    internal val pandoraId: String,
+    override val pandoraId: String,
     val detailUrl: String? = null,
     override val listenerCount: Int? = null,
     override val artUrls: HashMap<Int, String>
 ) : Listenable("https://www.pandora.com/web-version/1.34.2/images/artist_500.png") {
     private constructor(genreStationJSON: JSONObject) : this(
-        name = genreStationJSON.getString("name"),
+        name = genreStationJSON.getString("name").trim().replace(trimRegex, " "),
         musicId = genreStationJSON.getString("musicId"),
         pandoraId = genreStationJSON.getString("pandoraId"),
         detailUrl = genreStationJSON.getString("detailUrl"),

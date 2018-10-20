@@ -70,16 +70,18 @@ fun GenreCategory.getGenres(user: User): List<GenreStation> {
 }
 
 /**
- * Adds the genre station to the user's station list.
+ * Adds the listenable to the user's station list.
  *
- * @receiver The genre station to add.
- * @param The [User] to add the genre station to.
+ * @receiver The listenable to add.
+ * @param [user] the user to add the listenable to.
  */
-fun GenreStation.add(user: User) {
+fun add(listenable: Listenable, user: User, name: String) {
     Networking.makeApiRequest(
         "v1",
         "station/createStation",
-        JSONObject().put("pandoraId", pandoraId),
+        JSONObject()
+            .put("pandoraId", listenable.pandoraId)
+            .put("stationName", name),
         user
     )
 }

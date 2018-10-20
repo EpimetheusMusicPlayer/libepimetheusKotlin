@@ -14,6 +14,7 @@ object Stations {
      *
      * @param [user] The [User] object to authenticate with.
      * @param [includeShuffle] Whether to include the Shuffle station in the list or not.
+     * @param [trim] Remove leading and trailing whitespace from the station names.
      * @param [sortWith] A comparator to sort the list with. Can be null. The default comparator
      *                   sorts in alphabetical order, with the Shuffle and Thumbprint stations at
      *                   the top.
@@ -22,6 +23,7 @@ object Stations {
     fun getStations(
         user: User,
         includeShuffle: Boolean = true,
+        trim: Boolean = true,
         sortWith: Comparator<Station>? =
             Comparator { station1, station2 ->
                 when {
@@ -39,26 +41,29 @@ object Stations {
                 "station/getStations",
                 JSONObject().put("pageSize", 250),
                 user
-            ).getJSONArray("stations")
+            ).getJSONArray("stations"),
+            trim
         ).apply {
             if (includeShuffle) {
-                add(0, getShuffle(user))
+                add(0, getShuffle(user, trim))
             }
-        }.run { if (sortWith != null) sortedWith(sortWith) else this}
+        }.run { if (sortWith != null) sortedWith(sortWith) else this }
 
     /**
      * This function gets the shuffle station, which isn't included in [getStations].
      *
      * @param [user] The [User] object to authenticate with.
+     * @param [trim] Remove leading and trailing whitespace from the station names.
      * @return A shuffle [Station] object
      */
-    private fun getShuffle(user: User) =
+    private fun getShuffle(user: User, trim: Boolean = true) =
         Station(
             Networking.makeApiRequest(
                 version = "v1",
                 endpoint = "station/shuffle",
                 user = user
-            )
+            ),
+            trim
         )
 }
 

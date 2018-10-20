@@ -5,6 +5,8 @@ import android.os.Parcelable
 import org.json.JSONArray
 import org.json.JSONObject
 
+internal val trimRegex = "\\s+".toRegex()
+
 /**
  * A data class to hold information about a station.
  *
@@ -29,9 +31,10 @@ data class Station(
      * This constructor creates a [Station] object from a JSON station entry from the Pandora API response.
      *
      * @param [stationJSON] The JSON object from the Pandora API response.
+     * @param [trim] Remove leading and trailing whitespace from the station names.
      */
-   internal constructor(stationJSON: JSONObject) : this(
-        name = stationJSON.getString("name"),
+   internal constructor(stationJSON: JSONObject, trim: Boolean) : this(
+        name = stationJSON.getString("name").run { if (trim) trim().replace(trimRegex, " ") else this },
         id = stationJSON.getString("stationId"),
         isShuffle = stationJSON.getBoolean("isShuffle"),
         isThumbprint = stationJSON.getBoolean("isThumbprint"),
@@ -45,11 +48,12 @@ data class Station(
          * This function creates a list of [Station] objects from a JSON array from the Pandora API response.
          *
          * @param [jsonArray] The JSON array from the Pandora API response.
+         * @param [trim] Remove leading and trailing whitespace from the station names.
          * @return A list of [Station] objects.
          */
-        internal fun createListFromJSONArray(jsonArray: JSONArray): MutableList<Station> {
+        internal fun createListFromJSONArray(jsonArray: JSONArray, trim: Boolean): MutableList<Station> {
             return MutableList(jsonArray.length()) {
-                Station(jsonArray.getJSONObject(it))
+                Station(jsonArray.getJSONObject(it), trim)
             }
         }
 

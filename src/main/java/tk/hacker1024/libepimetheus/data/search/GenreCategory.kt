@@ -5,6 +5,7 @@ import android.os.Parcelable
 import org.json.JSONArray
 import org.json.JSONObject
 import tk.hacker1024.libepimetheus.data.PandoraData
+import tk.hacker1024.libepimetheus.data.trimRegex
 
 /**
  * A data class to hold information about a genre category.
@@ -17,7 +18,7 @@ data class GenreCategory(
     override val artUrls: HashMap<Int, String>
 ) : PandoraData(), Parcelable {
     private constructor(genreCategoryJSON: JSONObject) : this(
-        name = genreCategoryJSON.getString("name"),
+        name = genreCategoryJSON.getString("name").trim().replace(trimRegex, " "),
         token = genreCategoryJSON.getString("token"),
         artUrls = artJSONtoMap(genreCategoryJSON.getJSONArray("art"))
     )
