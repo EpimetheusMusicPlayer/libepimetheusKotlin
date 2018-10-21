@@ -43,6 +43,24 @@ data class Station(
         artUrls = if (stationJSON.has("art")) artJSONtoMap(stationJSON.getJSONArray("art")) else HashMap()
     )
 
+    override fun equals(other: Any?) =
+        if (other is Station) {
+            id == other.id &&
+            isShuffle == other.isShuffle &&
+            isThumbprint == other.isThumbprint &&
+            canDelete == other.canDelete &&
+            canRename == other.canRename
+        } else super.equals(other)
+
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        result = 31 * result + isShuffle.hashCode()
+        result = 31 * result + isThumbprint.hashCode()
+        result = 31 * result + canDelete.hashCode()
+        result = 31 * result + canRename.hashCode()
+        return result
+    }
+
     companion object CREATOR : Parcelable.Creator<Station> {
         /**
          * This function creates a list of [Station] objects from a JSON array from the Pandora API response.
