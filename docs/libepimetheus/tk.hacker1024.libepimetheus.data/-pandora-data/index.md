@@ -27,7 +27,7 @@
 
 | Name | Summary |
 |---|---|
-| [GenreCategory](../../tk.hacker1024.libepimetheus.data.search/-genre-category/index.md) | `data class GenreCategory : `[`PandoraData`](./index.md)<br>A data class to hold information about a genre category. |
+| [GenreCategory](../../tk.hacker1024.libepimetheus.data.search/-genre-category/index.md) | `data class GenreCategory : `[`PandoraData`](./index.md)`, `[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable.html)<br>A data class to hold information about a genre category. |
 | [Listenable](../../tk.hacker1024.libepimetheus.data.search/-listenable/index.md) | `abstract class Listenable : `[`PandoraData`](./index.md) |
 | [Song](../-song/index.md) | `class Song : `[`PandoraData`](./index.md)<br>A data class to hold information about a song. |
 | [Station](../-station/index.md) | `data class Station : `[`PandoraData`](./index.md)`, `[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable.html)<br>A data class to hold information about a station. |

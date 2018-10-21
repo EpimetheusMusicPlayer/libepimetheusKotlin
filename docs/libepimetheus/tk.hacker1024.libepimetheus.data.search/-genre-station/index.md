@@ -20,3 +20,9 @@ A data class to hold information about a genre station.
 | [description](description.md) | `val description: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`?`<br>The genre station's description. |
 | [listenerCount](listener-count.md) | `val listenerCount: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`?` |
 | [name](name.md) | `val name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>The name of the genre station. |
+
+### Inherited Functions
+
+| Name | Summary |
+|---|---|
+| [add](../-listenable/add.md) | `fun add(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)` = this.name.trim() + " Radio"): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |

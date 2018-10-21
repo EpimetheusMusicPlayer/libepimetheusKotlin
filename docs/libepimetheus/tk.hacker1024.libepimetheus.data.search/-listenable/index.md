@@ -23,6 +23,12 @@
 | [artUrls](../../tk.hacker1024.libepimetheus.data/-pandora-data/art-urls.md) | `abstract val artUrls: `[`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html)`<`[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`>` |
 | [name](../../tk.hacker1024.libepimetheus.data/-pandora-data/name.md) | `abstract val name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 
+### Functions
+
+| Name | Summary |
+|---|---|
+| [add](add.md) | `fun add(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)` = this.name.trim() + " Radio"): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
+
 ### Inherited Functions
 
 | Name | Summary |

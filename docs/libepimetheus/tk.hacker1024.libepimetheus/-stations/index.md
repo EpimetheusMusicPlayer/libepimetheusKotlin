@@ -11,7 +11,7 @@ The Pandora station APIs are documented [here](https://6xq.net/pandora-apidoc/re
 
 | Name | Summary |
 |---|---|
-| [getStations](get-stations.md) | `fun getStations(user: `[`User`](../-user/index.md)`, includeShuffle: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = true, sortWith: `[`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/index.html)`<`[`Station`](../../tk.hacker1024.libepimetheus.data/-station/index.md)`>? = Comparator { station1, station2 ->
+| [getStations](get-stations.md) | `fun getStations(user: `[`User`](../-user/index.md)`, includeShuffle: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = true, trim: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = true, sortWith: `[`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/index.html)`<`[`Station`](../../tk.hacker1024.libepimetheus.data/-station/index.md)`>? = Comparator { station1, station2 ->
                 when {
                     station1.isShuffle -> -2
                     station2.isShuffle -> 2

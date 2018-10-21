@@ -29,6 +29,7 @@ Code to connect to Pandora's APIs.
 
 | Name | Summary |
 |---|---|
+| [add](add.md) | `fun add(listenable: `[`Listenable`](../tk.hacker1024.libepimetheus.data.search/-listenable/index.md)`, user: `[`User`](-user/index.md)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Adds the listenable to the user's station list. |
 | [addFeedback](add-feedback.md) | `fun `[`Song`](../tk.hacker1024.libepimetheus.data/-song/index.md)`.addFeedback(thumbsUp: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`, user: `[`User`](-user/index.md)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Adds feedback for the [Song](../tk.hacker1024.libepimetheus.data/-song/index.md). |
 | [addTired](add-tired.md) | `fun `[`Song`](../tk.hacker1024.libepimetheus.data/-song/index.md)`.addTired(user: `[`User`](-user/index.md)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Sets the [Song](../tk.hacker1024.libepimetheus.data/-song/index.md) as tired (won't play for a while). |
 | [delete](delete.md) | `fun `[`Station`](../tk.hacker1024.libepimetheus.data/-station/index.md)`.delete(user: `[`User`](-user/index.md)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>This extension function deletes the receiver station. |
