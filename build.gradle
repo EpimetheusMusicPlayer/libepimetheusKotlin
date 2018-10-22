@@ -17,7 +17,7 @@ buildscript {
         maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.0-alpha01'
+        classpath 'com.android.tools.build:gradle:3.4.0-alpha02'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.17"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
@@ -55,6 +55,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.media:media:1.0.0'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
 }

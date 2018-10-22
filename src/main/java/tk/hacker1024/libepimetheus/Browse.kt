@@ -70,12 +70,9 @@ fun GenreCategory.getGenres(user: User): List<GenreStation> {
 }
 
 /**
- * Adds the listenable to the user's station list.
- *
- * @receiver The listenable to add.
- * @param [user] the user to add the listenable to.
+ * @see Listenable.add
  */
-fun add(listenable: Listenable, user: User, name: String) {
+internal fun add(listenable: Listenable, user: User, name: String) {
     Networking.makeApiRequest(
         "v1",
         "station/createStation",

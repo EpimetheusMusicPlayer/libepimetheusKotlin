@@ -3,6 +3,8 @@ package tk.hacker1024.libepimetheus
 import org.json.JSONObject
 import tk.hacker1024.libepimetheus.data.Song
 import tk.hacker1024.libepimetheus.data.Station
+import tk.hacker1024.libepimetheus.data.feedback.FeedbackItem
+import tk.hacker1024.libepimetheus.data.feedback.FeedbackList
 
 /**
  * This singleton contains functions to retrieve station information.
@@ -143,5 +145,35 @@ fun Station.rename(newName: String, user: User): String {
         }
     } else {
         return name
+    }
+}
+
+/**
+ * Retrieves the station feedback.
+ *
+ * @receiver The station to get the feedback for.
+ * @param [user] The [User] object to authenticate with.
+ * @param [positive] true = thumbs up, false = thumbs down.
+ * @param [pageSize] The size of the feedback list.
+ * @param [startIndex] The index to start at (used for pagination).
+ * @return A [FeedbackList].
+ */
+fun Station.getFeedback(user: User, positive: Boolean, pageSize: Int, startIndex: Int = 0): FeedbackList {
+    return Networking.makeApiRequest(
+        "v1",
+        "station/getStationFeedback",
+        JSONObject()
+            .put("pageSize", pageSize)
+            .put("positive", positive)
+            .put("startIndex", startIndex)
+            .put("stationId", id),
+        user
+    ).run {
+        FeedbackItem.createListFromJSONArray(
+            positive,
+            getInt("total"),
+            getJSONArray("feedback"),
+            id
+        )
     }
 }

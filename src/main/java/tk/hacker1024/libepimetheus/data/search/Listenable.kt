@@ -10,9 +10,10 @@ abstract class Listenable(defaultArtUrl: String = GENERIC_ART_URL) : PandoraData
     abstract val listenerCount: Int?
 
     /**
-     * @see tk.hacker1024.libepimetheus.add
+     * Adds the listenable to the user's station list.
+     *
+     * @receiver The listenable to add.
+     * @param [user] the user to add the listenable to.
      */
-    fun add(user: User, name: String = this.name.trim() + " Radio") {
-        add(this, user, name)
-    }
+    fun add(user: User, name: String = this.name.trim() + " Radio") = add(this, user, name)
 }

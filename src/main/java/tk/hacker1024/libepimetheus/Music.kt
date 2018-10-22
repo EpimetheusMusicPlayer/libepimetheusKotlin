@@ -2,6 +2,7 @@ package tk.hacker1024.libepimetheus
 
 import android.support.v4.media.RatingCompat
 import org.json.JSONObject
+import tk.hacker1024.libepimetheus.data.Rateable
 import tk.hacker1024.libepimetheus.data.Song
 
 /**
@@ -43,16 +44,18 @@ fun Song.addFeedback(thumbsUp: Boolean, user: User) {
 }
 
 /**
- * Removes feedback from a [Song].
+ * Removes feedback from a [Rateable].
  *
- * @receiver The [Song] object to remove feedback on.
+ * @receiver The [Rateable] object to remove feedback on.
  * @param [user] The [User] object to authenticate with.
  */
-fun Song.deleteFeedback(user: User) {
+fun Rateable.deleteFeedback(user: User) {
     if (!rating.isRated) throw IllegalStateException("Song is not rated yet!")
     settingFeedback = rating
-    if (!isFeedbackIDSet()) {
-        feedbackId = getFeedbackId(user)
+    if (this is Song) {
+        if (!isFeedbackIDSet()) {
+            feedbackId = getFeedbackId(user)
+        }
     }
     Networking.makeApiRequest(
         "v1",

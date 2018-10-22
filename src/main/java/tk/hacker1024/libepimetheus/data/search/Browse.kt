@@ -56,7 +56,7 @@ data class AutocompleteResults(
                                     Track(
                                         name =          values[2],
                                         artist =        values[1],
-                                        pandoraId =            values[0],
+                                        pandoraId =     values[0],
                                         artUrls = hashMapOf(
                                             artSize to values[5].run {
                                                 if (isBlank()) GENERIC_ART_URL else this

@@ -16,19 +16,18 @@ import org.json.JSONObject
  * @property [settingFeedback] The feedback that's being sent to Pandora at the time. If it's
  *                             unrated, no feedback is being sent.
  */
-class Song(
+data class Song(
     override val name: String,
     val artist: String,
     val album: String,
-    rating: RatingCompat,
+    override var rating: RatingCompat,
     internal val id: String,
     internal val trackToken: String,
     val audioUri: Uri,
     override val artUrls: HashMap<Int, String>
-) : PandoraData() {
-    internal lateinit var feedbackId: String
-    var rating: RatingCompat = rating; internal set
-    var settingFeedback: RatingCompat = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN); internal set
+) : PandoraData(), Rateable {
+    override lateinit var feedbackId: String
+    override var settingFeedback: RatingCompat = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
 
     /**
      * This constructor creates a [Song] object from a JSON station entry from the Pandora API response.
@@ -39,8 +38,7 @@ class Song(
         name = songJSON.getString("songTitle"),
         artist = songJSON.getString("artistName"),
         album = songJSON.getString("albumTitle"),
-        rating = if (songJSON.getInt("rating") == 1) RatingCompat.newThumbRating(true) else RatingCompat.newUnratedRating(
-            RatingCompat.RATING_THUMB_UP_DOWN),
+        rating = if (songJSON.getInt("rating") == 1) RatingCompat.newThumbRating(true) else RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN),
         id = songJSON.getString("musicId"),
         trackToken = songJSON.getString("trackToken"),
         audioUri = Uri.parse(songJSON.getString("audioURL")),
