@@ -4,6 +4,8 @@
 
 `var rating: RatingCompat`
 
+Overrides [Rateable.rating](../-rateable/rating.md)
+
 The song rating.
 
 ### Property

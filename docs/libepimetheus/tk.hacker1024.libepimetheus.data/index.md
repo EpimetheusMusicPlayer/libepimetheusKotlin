@@ -9,5 +9,6 @@ Data objects - [Station](-station/index.md) and [Song](-song/index.md).
 | Name | Summary |
 |---|---|
 | [PandoraData](-pandora-data/index.md) | `abstract class PandoraData` |
-| [Song](-song/index.md) | `class Song : `[`PandoraData`](-pandora-data/index.md)<br>A data class to hold information about a song. |
+| [Rateable](-rateable/index.md) | `interface Rateable` |
+| [Song](-song/index.md) | `data class Song : `[`PandoraData`](-pandora-data/index.md)`, `[`Rateable`](-rateable/index.md)<br>A data class to hold information about a song. |
 | [Station](-station/index.md) | `data class Station : `[`PandoraData`](-pandora-data/index.md)`, `[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable.html)<br>A data class to hold information about a station. |

@@ -25,4 +25,4 @@ A data class to hold information about a genre station.
 
 | Name | Summary |
 |---|---|
-| [add](../-listenable/add.md) | `fun add(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)` = this.name.trim() + " Radio"): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
+| [add](../-listenable/add.md) | `fun add(user: `[`User`](../../tk.hacker1024.libepimetheus/-user/index.md)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)` = this.name.trim() + " Radio"): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Adds the listenable to the user's station list. |
