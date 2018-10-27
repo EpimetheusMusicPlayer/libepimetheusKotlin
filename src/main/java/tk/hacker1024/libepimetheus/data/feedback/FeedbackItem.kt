@@ -54,7 +54,7 @@ data class FeedbackItem(
     val sampleUrl: String?, // Ew an Apple service
     override var feedbackId: String,
     override val artUrls: HashMap<Int, String>
-): PandoraData(), Rateable {
+): Rateable() {
     override var settingFeedback: RatingCompat = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
 
     internal constructor(feedbackItemJSON: JSONObject) : this(

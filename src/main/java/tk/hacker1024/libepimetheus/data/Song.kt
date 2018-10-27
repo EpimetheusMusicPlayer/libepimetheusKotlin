@@ -25,8 +25,8 @@ data class Song(
     internal val trackToken: String,
     val audioUri: Uri,
     override val artUrls: HashMap<Int, String>
-) : PandoraData(), Rateable {
-    override lateinit var feedbackId: String
+) : Rateable() {
+    override lateinit var feedbackId: String;
     override var settingFeedback: RatingCompat = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
 
     /**
