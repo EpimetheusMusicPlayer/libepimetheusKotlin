@@ -2,12 +2,15 @@ package tk.hacker1024.libepimetheus.data
 
 import android.net.Uri
 import android.support.v4.media.RatingCompat
+import android.util.Log
 import org.json.JSONArray
 import org.json.JSONObject
+import tk.hacker1024.libepimetheus.data.Song.TrackType.Companion.toTrackType
 
 /**
  * A data class to hold information about a song.
  *
+ * @property [trackType] The track type.
  * @property [name] The name of the song.
  * @property [artist] The song artist.
  * @property [album] The song album.
@@ -17,6 +20,7 @@ import org.json.JSONObject
  *                             unrated, no feedback is being sent.
  */
 data class Song(
+    val trackType: TrackType,
     override val name: String,
     val artist: String,
     val album: String,
@@ -35,6 +39,7 @@ data class Song(
      * @param [songJSON] The JSON object from the Pandora API response.
      */
     private constructor(songJSON: JSONObject) : this(
+        trackType = songJSON.getString("trackType").toTrackType(),
         name = songJSON.getString("songTitle"),
         artist = songJSON.getString("artistName"),
         album = songJSON.getString("albumTitle"),
@@ -57,6 +62,30 @@ data class Song(
         internal fun createListFromJSONArray(jsonArray: JSONArray): List<Song> {
             return List(jsonArray.length()) {
                 Song(jsonArray.getJSONObject(it))
+            }
+        }
+    }
+
+    /**
+     * Enum class to represent song track type.
+     *
+     * @property [TRACK] A regular track.
+     * @property [ARTIST_MESSAGE] An artist message.
+     */
+    enum class TrackType {
+        TRACK,
+        ARTIST_MESSAGE;
+
+        companion object {
+            internal fun String.toTrackType(): TrackType {
+                return when (this) {
+                    "Track" -> TRACK
+                    "ArtistMessage" -> ARTIST_MESSAGE
+                    else -> {
+                        Log.w("libepimetheus", "Unknown track type found!")
+                        TRACK
+                    }
+                }
             }
         }
     }
