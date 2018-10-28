@@ -47,7 +47,9 @@ object Stations {
             trim
         ).apply {
             if (includeShuffle) {
-                add(0, getShuffle(user, trim))
+                try {
+                    add(0, getShuffle(user, trim))
+                } catch (e: InvalidRequestException) {}
             }
         }.run { if (sortWith != null) sortedWith(sortWith) else this }
 
