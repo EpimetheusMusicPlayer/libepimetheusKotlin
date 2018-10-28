@@ -1,5 +1,6 @@
 package tk.hacker1024.libepimetheus
 
+import org.json.JSONArray
 import org.json.JSONObject
 import tk.hacker1024.libepimetheus.data.search.*
 
@@ -101,15 +102,38 @@ object Search {
             artSize
         )
 
-    fun search(query: String, maxItemsPerCategory: Int = 50, user: User) =
+    /**
+     * Sends a search request to Pandora.
+     *
+     * @param [query] The query to send.
+     * @param [types] The types of items to search for.
+     * @param [start] The index to start at.
+     * @param [count] The page size.
+     * @param [user] The [User] object to authenticate with.
+     *
+     * @return [SearchResults].
+     */
+    fun search(query: String, types: List<SearchType> = listOf(SearchType.ALL), start: Int, count: Int, user: User) =
         SearchResults.createFromJSON(
             Networking.makeApiRequest(
-                "v1",
-                "search/fullSearch",
+                "v3",
+                "sod/search",
                 JSONObject()
-                    .put("maxItemsPerCategory", maxItemsPerCategory)
+                    .put("annotate", true)
+                    .put("count", count)
                     .put("query", query)
-                    .put("type", "all"),
+                    .put("start", start)
+                    .put(
+                        "types",
+                        JSONArray()
+                            .apply {
+                                for (type in types) {
+                                    for (id in type.identifiers) {
+                                        put(id)
+                                    }
+                                }
+                            }
+                    ),
                 user
             )
         )

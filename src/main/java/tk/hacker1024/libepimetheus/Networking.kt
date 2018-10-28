@@ -105,8 +105,8 @@ object Networking {
             if (has("errorCode")) {
                 throwError(
                     getInt("errorCode"),
-                    getString("errorString"),
-                    getString("message")
+                    if (has("errorString")) getString("errorString") else "No error string",
+                    if (has("message")) getString("message") else "No message"
                 )
             }
         }
