@@ -1,5 +1,7 @@
 package tk.hacker1024.libepimetheus.data.search
 
+import android.net.Uri
+import androidx.recyclerview.widget.DiffUtil
 import tk.hacker1024.libepimetheus.data.PandoraData
 
 /**
@@ -13,4 +15,21 @@ data class Playlist(
     val totalTracks: Int,
     internal val pandoraId: String,
     override val artUrls: HashMap<Int, String>
-) : PandoraData()
+) : PandoraData() {
+    /**
+     * A [DiffUtil.ItemCallback] implementation.
+     */
+    open class DiffUtilItemCallback : DiffUtil.ItemCallback<Playlist>() {
+        override fun areItemsTheSame(oldItem: Playlist, newItem: Playlist) =
+            oldItem.pandoraId == newItem.pandoraId
+
+        override fun areContentsTheSame(oldItem: Playlist, newItem: Playlist): Boolean {
+            return oldItem.name == newItem.name && oldItem.totalTracks == newItem.totalTracks
+        }
+    }
+
+    companion object {
+        fun getGridUrl(thorLayers: String, artSize: Int) =
+            "https://dyn-images.p-cdn.com/?l=${Uri.encode(thorLayers)}&w=$artSize&h=$artSize"
+    }
+}

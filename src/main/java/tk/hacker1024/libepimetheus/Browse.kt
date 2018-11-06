@@ -105,15 +105,16 @@ object Search {
     /**
      * Sends a search request to Pandora.
      *
+     * @param [user] The [User] object to authenticate with.
      * @param [query] The query to send.
-     * @param [types] The types of items to search for.
      * @param [start] The index to start at.
      * @param [count] The page size.
-     * @param [user] The [User] object to authenticate with.
+     * @param [artSize] The art size. Note that this is preferred, and many results may have a different size. Should be one of the following: 90, 130, 500, 640, 1080
+     * @param [types] The types of items to search for.
      *
      * @return [SearchResults].
      */
-    fun search(query: String, types: List<SearchType> = listOf(SearchType.ALL), start: Int, count: Int, user: User) =
+    fun search(user: User, query: String, start: Int, count: Int, artSize: Int, vararg types: SearchType) =
         SearchResults.createFromJSON(
             Networking.makeApiRequest(
                 "v3",
@@ -135,6 +136,7 @@ object Search {
                             }
                     ),
                 user
-            )
+            ),
+            artSize
         )
 }

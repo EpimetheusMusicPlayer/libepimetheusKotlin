@@ -1,7 +1,9 @@
 package tk.hacker1024.libepimetheus.data.search
 
+import androidx.recyclerview.widget.DiffUtil
 import org.json.JSONArray
 import org.json.JSONObject
+import tk.hacker1024.libepimetheus.data.PandoraData
 import tk.hacker1024.libepimetheus.data.trimRegex
 
 /**
@@ -28,6 +30,18 @@ data class GenreStation(
         listenerCount = genreStationJSON.getInt("listenerCount"),
         artUrls = artJSONtoMap(genreStationJSON.getJSONArray("art"))
     )
+
+    /**
+     * A [DiffUtil.ItemCallback] implementation.
+     */
+    open class DiffUtilItemCallback : DiffUtil.ItemCallback<GenreStation>() {
+        override fun areItemsTheSame(oldItem: GenreStation, newItem: GenreStation) =
+            oldItem.pandoraId == newItem.pandoraId && oldItem.token == newItem.token && oldItem.musicId == newItem.musicId
+
+        override fun areContentsTheSame(oldItem: GenreStation, newItem: GenreStation): Boolean {
+            return oldItem.name == newItem.name && oldItem.listenerCount == newItem.listenerCount && oldItem.description == newItem.description
+        }
+    }
 
     internal companion object {
         /**

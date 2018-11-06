@@ -55,7 +55,7 @@ data class AutocompleteResults(
                                 tracks.add(
                                     Track(
                                         name =          values[2],
-                                        artist =        values[1],
+                                        artistName =    values[1],
                                         pandoraId =     values[0],
                                         artUrls = hashMapOf(
                                             artSize to values[5].run {

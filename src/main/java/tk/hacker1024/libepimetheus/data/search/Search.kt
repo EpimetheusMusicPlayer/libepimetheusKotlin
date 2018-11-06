@@ -2,6 +2,8 @@ package tk.hacker1024.libepimetheus.data.search
 
 import org.json.JSONObject
 
+internal const val ART_HOST = "https://content-images.p-cdn.com/"
+
 enum class SearchType(internal val identifiers: List<String>) {
     ALBUM(listOf("AL")),
     ARTIST(listOf("AR", "CO")),
@@ -28,7 +30,7 @@ data class SearchResults(
     val playlists: List<Playlist>
 ) {
     internal companion object {
-        internal fun createFromJSON(jsonObject: JSONObject): SearchResults {
+        internal fun createFromJSON(jsonObject: JSONObject, artSize: Int): SearchResults {
             val artistList = ArrayList<Artist>()
             val albumList = ArrayList<Album>()
             val trackList = ArrayList<Track>()
@@ -47,9 +49,11 @@ data class SearchResults(
                                     Artist(
                                         name = getString("name"),
                                         pandoraId = getString("pandoraId"),
+                                        trackCount = getInt("trackCount"),
+                                        albumCount = getInt("albumCount"),
                                         artUrls = HashMap<Int, String>().apply {
                                             getJSONObject("icon").apply {
-                                                if (has("artUrl")) put(0, getString("artUrl"))
+                                                if (has("artUrl")) put(0, ART_HOST + getString("artUrl"))
                                             }
                                         }
                                     )
@@ -61,9 +65,10 @@ data class SearchResults(
                                         name = getString("name"),
                                         artistName = getString("artistName"),
                                         pandoraId = getString("pandoraId"),
+                                        trackCount = getInt("trackCount"),
                                         artUrls = HashMap<Int, String>().apply {
                                             getJSONObject("icon").apply {
-                                                if (has("artUrl")) put(0, getString("artUrl"))
+                                                if (has("thorId")) put(0, ART_HOST + getString("thorId"))
                                             }
                                         }
                                     )
@@ -73,11 +78,11 @@ data class SearchResults(
                                 trackList.add(
                                     Track(
                                         name = getString("name"),
-                                        artist = getString("artistName"),
+                                        artistName = getString("artistName"),
                                         pandoraId = getString("pandoraId"),
                                         artUrls = HashMap<Int, String>().apply {
                                             getJSONObject("icon").apply {
-                                                if (has("artUrl")) put(0, getString("artUrl"))
+                                                if (has("thorId")) put(0, ART_HOST + getString("thorId"))
                                             }
                                         }
                                     )
@@ -90,7 +95,7 @@ data class SearchResults(
                                         pandoraId = getString("pandoraId"),
                                         artUrls = HashMap<Int, String>().apply {
                                             getJSONObject("icon").apply {
-                                                if (has("artUrl")) put(0, getString("artUrl"))
+                                                if (has("artUrl")) put(0, ART_HOST + getString("artUrl"))
                                             }
                                         }
                                     )
@@ -102,7 +107,9 @@ data class SearchResults(
                                         name = getString("name"),
                                         totalTracks = getInt("totalTracks"),
                                         pandoraId = getString("pandoraId"),
-                                        artUrls = HashMap()
+                                        artUrls = HashMap<Int, String>().apply {
+                                            if (has("thorLayers")) put(0, Playlist.getGridUrl(getString("thorLayers"), artSize))
+                                        }
                                     )
                                 )
                             }
