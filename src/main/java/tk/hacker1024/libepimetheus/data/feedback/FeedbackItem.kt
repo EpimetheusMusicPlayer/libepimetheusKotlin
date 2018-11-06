@@ -4,7 +4,6 @@ import android.support.v4.media.RatingCompat
 import androidx.recyclerview.widget.DiffUtil
 import org.json.JSONArray
 import org.json.JSONObject
-import tk.hacker1024.libepimetheus.data.PandoraData
 import tk.hacker1024.libepimetheus.data.Rateable
 import java.util.*
 

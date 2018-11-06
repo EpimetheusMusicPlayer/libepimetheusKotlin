@@ -1,10 +1,7 @@
 package tk.hacker1024.libepimetheus.data.search
 
 import androidx.recyclerview.widget.DiffUtil
-import org.json.JSONArray
-import org.json.JSONObject
 import tk.hacker1024.libepimetheus.data.PandoraData
-import tk.hacker1024.libepimetheus.data.trimRegex
 
 /**
  * A data class to hold information about an album.

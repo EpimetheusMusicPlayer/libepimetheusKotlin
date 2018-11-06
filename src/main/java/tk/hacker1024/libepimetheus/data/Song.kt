@@ -5,7 +5,9 @@ import android.support.v4.media.RatingCompat
 import android.util.Log
 import org.json.JSONArray
 import org.json.JSONObject
+import tk.hacker1024.libepimetheus.data.Song.TrackType.ARTIST_MESSAGE
 import tk.hacker1024.libepimetheus.data.Song.TrackType.Companion.toTrackType
+import tk.hacker1024.libepimetheus.data.Song.TrackType.TRACK
 
 /**
  * A data class to hold information about a song.
@@ -30,7 +32,7 @@ data class Song(
     val audioUri: Uri,
     override val artUrls: HashMap<Int, String>
 ) : Rateable() {
-    override lateinit var feedbackId: String;
+    override lateinit var feedbackId: String
     override var settingFeedback: RatingCompat = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
 
     /**
