@@ -8,6 +8,7 @@ import org.json.JSONObject
 import tk.hacker1024.libepimetheus.data.Song.TrackType.ARTIST_MESSAGE
 import tk.hacker1024.libepimetheus.data.Song.TrackType.Companion.toTrackType
 import tk.hacker1024.libepimetheus.data.Song.TrackType.TRACK
+import java.io.Serializable
 
 /**
  * A data class to hold information about a song.
@@ -34,6 +35,11 @@ data class Song(
 ) : Rateable() {
     override lateinit var feedbackId: String
     override var settingFeedback: RatingCompat = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
+
+    /**
+     * A unique ID to identify the song. The current implementation is the same as the pandoraId.
+     */
+    val uniqueId get() = id
 
     /**
      * This constructor creates a [Song] object from a JSON station entry from the Pandora API response.

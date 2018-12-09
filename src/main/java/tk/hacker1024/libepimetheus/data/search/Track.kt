@@ -1,7 +1,13 @@
 package tk.hacker1024.libepimetheus.data.search
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
+import org.json.JSONObject
 import tk.hacker1024.libepimetheus.data.PandoraData
+import tk.hacker1024.libepimetheus.data.Song
+import tk.hacker1024.libepimetheus.data.feedback.FeedbackItem
+import java.io.Serializable
 
 /**
  * A data class to hold information about a track.
@@ -14,7 +20,7 @@ data class Track(
     val artistName: String,
     internal val pandoraId: String,
     override val artUrls: HashMap<Int, String>
-) : PandoraData() {
+) : PandoraData(), Parcelable {
     /**
      * A [DiffUtil.ItemCallback] implementation.
      */
@@ -26,4 +32,35 @@ data class Track(
             return oldItem.name == newItem.name && oldItem.artistName == newItem.artistName
         }
     }
+
+    @Suppress("UNCHECKED_CAST")
+    constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readSerializable() as HashMap<Int, String>
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(artistName)
+        parcel.writeString(pandoraId)
+        parcel.writeSerializable(artUrls)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Track> {
+        override fun createFromParcel(parcel: Parcel): Track {
+            return Track(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Track?> {
+            return arrayOfNulls(size)
+        }
+    }
 }
+
+fun FeedbackItem.toTrack() = Track(name, artist, pandoraId, artUrls)

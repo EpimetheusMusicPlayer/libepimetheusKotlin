@@ -6,7 +6,7 @@ internal const val GENERIC_ART_URL = "https://www.pandora.com/web-version/1.25.1
 
 abstract class PandoraData(private val defaultArtUrl: String = GENERIC_ART_URL) {
     abstract val name: String
-    protected abstract val artUrls: HashMap<Int, String>
+    internal abstract val artUrls: HashMap<Int, String>
 
     /**
      * This function will return the data object's art URL for the given size. If the given size

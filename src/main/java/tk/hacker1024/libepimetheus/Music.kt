@@ -29,17 +29,22 @@ fun Song.addTired(user: User) {
  */
 fun Song.addFeedback(thumbsUp: Boolean, user: User) {
     settingFeedback = RatingCompat.newThumbRating(thumbsUp)
-    Networking.makeApiRequest(
-        "v1",
-        "station/addFeedback",
-        JSONObject()
-            .put("trackToken", trackToken)
-            .put("isPositive", thumbsUp),
-        user
-    ).apply {
-        feedbackId = getString("feedbackId")
-        rating = RatingCompat.newThumbRating(getBoolean("isPositive"))
+    try {
+        Networking.makeApiRequest(
+            "v1",
+            "station/addFeedback",
+            JSONObject()
+                .put("trackToken", trackToken)
+                .put("isPositive", thumbsUp),
+            user
+        ).apply {
+            feedbackId = getString("feedbackId")
+            rating = RatingCompat.newThumbRating(getBoolean("isPositive"))
+            settingFeedback = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
+        }
+    } catch (e: Exception) {
         settingFeedback = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
+        throw e
     }
 }
 
@@ -52,22 +57,27 @@ fun Song.addFeedback(thumbsUp: Boolean, user: User) {
 fun Rateable.deleteFeedback(user: User) {
     if (!rating.isRated) throw IllegalStateException("Song is not rated yet!")
     settingFeedback = rating
-    if (this is Song) {
-        if (!isFeedbackIDSet()) {
-            feedbackId = getFeedbackId(user)
+    try {
+        if (this is Song) {
+            if (!isFeedbackIDSet()) {
+                feedbackId = getFeedbackId(user)
+            }
         }
-    }
-    Networking.makeApiRequest(
-        "v1",
-        "station/deleteFeedback",
-        JSONObject()
-            .put("feedbackId", feedbackId)
-            .put("isPositive", rating.isThumbUp),
-        user
-    ).apply {
-        feedbackId = getString("feedbackId")
-        rating = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
-        settingFeedback = rating
+        Networking.makeApiRequest(
+            "v1",
+            "station/deleteFeedback",
+            JSONObject()
+                .put("feedbackId", feedbackId)
+                .put("isPositive", rating.isThumbUp),
+            user
+        ).apply {
+            feedbackId = getString("feedbackId")
+            rating = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
+            settingFeedback = rating
+        }
+    } catch (e: Exception) {
+        settingFeedback = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
+        throw e
     }
 }
 

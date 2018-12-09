@@ -16,7 +16,7 @@ import java.util.*
 class FeedbackList(
     val isPositive: Boolean,
     val totalSize: Int,
-    internal val stationId: String
+    private val stationId: String
 ) : ArrayList<FeedbackItem>() {
     constructor(
         isPositive: Boolean,
@@ -52,6 +52,7 @@ data class FeedbackItem(
     val album: String,
     val sampleUrl: String?, // Ew an Apple service
     override var feedbackId: String,
+    internal val pandoraId: String,
     override val artUrls: HashMap<Int, String>
 ): Rateable() {
     override var settingFeedback: RatingCompat = RatingCompat.newUnratedRating(RatingCompat.RATING_THUMB_UP_DOWN)
@@ -63,6 +64,7 @@ data class FeedbackItem(
              album = feedbackItemJSON.getString("albumTitle"),
          sampleUrl = if (feedbackItemJSON.has("sampleUrl")) feedbackItemJSON.getString("sampleUrl") else null,
         feedbackId = feedbackItemJSON.getString("feedbackId"),
+         pandoraId = feedbackItemJSON.getString("pandoraId"),
            artUrls = artJSONtoMap(feedbackItemJSON.getJSONArray("albumArt"))
     )
 

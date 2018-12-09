@@ -3,6 +3,7 @@ package tk.hacker1024.libepimetheus
 import org.json.JSONArray
 import org.json.JSONObject
 import tk.hacker1024.libepimetheus.data.search.*
+import tk.hacker1024.libepimetheus.data.search.details.TrackDetails
 
 /**
  * Data class holding station recommendations from Pandora.
@@ -140,3 +141,39 @@ object Search {
             artSize
         )
 }
+
+/**
+ * Get track details.
+ *
+ * @param [user] the [User] object to authenticate with.
+ * @return A [TrackDetails] object.
+ */
+fun Track.getDetails(user: User) =
+    TrackDetails(
+        Networking.makeApiRequest(
+            "v1",
+            "music/track",
+            JSONObject().put("token", pandoraId.replace("TR:", "S")),
+            user
+        )
+    )
+
+
+/**
+ * Gets the lyrics of a track.
+ *
+ * @param [user] The [User] object to authenticate with.
+ * @param [explicit] Whether to censor explicit language or not (asterisks replacing middle characters of words)
+ * @return The lyrics string.
+ */
+fun TrackDetails.getLyrics(explicit: Boolean = true, user: User) =
+    TrackDetails.lyricsArrayToString(
+        Networking.makeApiRequest(
+            "v1",
+            "music/fullLyrics",
+            JSONObject()
+                .put("nonExplicit", !explicit)
+                .put("trackUid", musicId),
+            user
+        ).getJSONArray("lines")
+    )
