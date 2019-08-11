@@ -1,5 +1,7 @@
 ## libepimetheus
 
+This version of the library is abandoned. I'm rewriting it in Dart.
+
 ### About
 
 Libepimetheus is an Android library to connect to [Pandora Music](https://www.pandora.com/)'s REST API, documented [here](https://6xq.net/pandora-apidoc/rest/). It's the same API the web app uses. Libepimetheus doesn't enforce ads or skip limits.  
